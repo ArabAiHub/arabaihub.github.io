@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ArabAIHub — دليل أدوات الذكاء الاصطناعي بالعربي</title>
+<meta name="description" content="دليل عربي محدّث لأفضل أدوات الذكاء الاصطناعي، مع تقييم صريح لمدى فهمها للعربية.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#10151f;
+    --bg-elev:#171e2c;
+    --bg-card:#1b2333;
+    --border:#2a3346;
+    --gold:#d3a34e;
+    --gold-dim:#8a6f3a;
+    --teal:#46b3a0;
+    --coral:#d9634a;
+    --text:#eeeae1;
+    --text-dim:#93a0b5;
+    --text-faint:#5c6579;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'IBM Plex Sans Arabic', sans-serif;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{ font-family:'Tajawal', sans-serif; }
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  ::selection{ background:var(--gold); color:#10151f; }
+  :focus-visible{ outline:2px solid var(--teal); outline-offset:3px; }
+
+  .wrap{ max-width:1180px; margin:0 auto; padding:0 24px; }
+
+  /* ===== HEADER ===== */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(16,21,31,0.9);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav{ display:flex; align-items:center; justify-content:space-between; padding:16px 24px; }
+  .logo{ font-family:'Tajawal'; font-weight:900; font-size:22px; letter-spacing:0.5px; display:flex; align-items:center; gap:8px;}
+  .logo span{ color:var(--gold); }
+  .nav-links{ display:flex; gap:28px; font-size:15px; color:var(--text-dim); }
+  .nav-links a:hover{ color:var(--gold); }
+  @media(max-width:720px){ .nav-links{ display:none; } }
+
+  /* ===== HERO ===== */
+  .hero{
+    padding:88px 24px 64px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+    border-bottom:1px solid var(--border);
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      radial-gradient(ellipse 700px 400px at 30% 0%, rgba(211,163,78,0.10), transparent 60%),
+      radial-gradient(ellipse 600px 400px at 80% 30%, rgba(70,179,160,0.08), transparent 60%);
+    pointer-events:none;
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:13px; color:var(--teal); letter-spacing:1px;
+    border:1px solid rgba(70,179,160,0.35); border-radius:999px;
+    padding:6px 16px; margin-bottom:28px;
+    background:rgba(70,179,160,0.06);
+  }
+  .hero h1{
+    font-size:clamp(34px,5.5vw,58px);
+    font-weight:900;
+    line-height:1.25;
+    max-width:820px;
+    margin:0 auto 20px;
+  }
+  .hero h1 em{ color:var(--gold); font-style:normal; }
+  .hero p{
+    color:var(--text-dim); font-size:18px; max-width:600px; margin:0 auto 40px;
+  }
+  .search-box{
+    max-width:620px; margin:0 auto; position:relative;
+  }
+  .search-box input{
+    width:100%; padding:18px 56px 18px 20px;
+    background:var(--bg-elev); border:1px solid var(--border); border-radius:14px;
+    color:var(--text); font-size:16px; font-family:inherit;
+  }
+  .search-box input::placeholder{ color:var(--text-faint); }
+  .search-box input:focus{ border-color:var(--gold); }
+  .search-box svg{ position:absolute; right:20px; top:50%; transform:translateY(-50%); width:20px; height:20px; stroke:var(--text-faint); }
+  .stats-row{ display:flex; gap:36px; justify-content:center; margin-top:48px; flex-wrap:wrap; }
+  .stat{ text-align:center; }
+  .stat b{ display:block; font-family:'Tajawal'; font-size:26px; font-weight:800; color:var(--gold); }
+  .stat span{ font-size:13px; color:var(--text-faint); }
+
+  /* ===== FILTERS ===== */
+  .filters{
+    display:flex; gap:10px; flex-wrap:wrap; justify-content:center;
+    padding:32px 24px 8px;
+  }
+  .chip{
+    padding:9px 18px; border-radius:999px; border:1px solid var(--border);
+    background:var(--bg-elev); color:var(--text-dim); font-size:14px; cursor:pointer;
+    transition:all .15s ease;
+  }
+  .chip:hover{ border-color:var(--gold-dim); color:var(--text); }
+  .chip.active{ background:var(--gold); border-color:var(--gold); color:#171018; font-weight:600; }
+
+  /* ===== SIGNATURE: Arabic Understanding Gauge ===== */
+  .gauge{ display:flex; align-items:center; gap:2px; }
+  .gauge i{ width:6px; height:16px; border-radius:2px; background:var(--border); }
+  .gauge i.on{ background:var(--teal); }
+  .gauge.low i.on{ background:var(--coral); }
+  .gauge.mid i.on{ background:var(--gold); }
+  .gauge-label{ font-size:11.5px; color:var(--text-faint); }
+
+  /* ===== GRID / CARDS ===== */
+  section.tools{ padding:24px 24px 80px; }
+  .grid{
+    display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+    gap:18px; margin-top:24px;
+  }
+  .card{
+    background:var(--bg-card); border:1px solid var(--border); border-radius:16px;
+    padding:22px; display:flex; flex-direction:column; gap:14px;
+    transition:transform .15s ease, border-color .15s ease;
+  }
+  .card:hover{ transform:translateY(-3px); border-color:var(--gold-dim); }
+  .card-top{ display:flex; justify-content:space-between; align-items:flex-start; gap:10px; }
+  .card-title{ font-family:'Tajawal'; font-weight:800; font-size:18px; }
+  .card-cat{ font-size:12px; color:var(--text-faint); margin-top:2px; }
+  .price-tag{
+    font-size:12px; padding:4px 10px; border-radius:8px; white-space:nowrap;
+    background:rgba(211,163,78,0.1); color:var(--gold); border:1px solid rgba(211,163,78,0.25);
+  }
+  .price-tag.free{ background:rgba(70,179,160,0.1); color:var(--teal); border-color:rgba(70,179,160,0.25); }
+  .card-desc{ font-size:14.5px; color:var(--text-dim); }
+  .pros-cons{ display:flex; gap:14px; font-size:13px; }
+  .pros-cons div{ flex:1; }
+  .pros-cons .label{ color:var(--text-faint); font-size:11.5px; margin-bottom:4px; display:block; }
+  .pros-cons ul{ list-style:none; display:flex; flex-direction:column; gap:3px; }
+  .pros-cons li{ color:var(--text-dim); }
+  .pros li::before{ content:"+ "; color:var(--teal); }
+  .cons li::before{ content:"− "; color:var(--coral); }
+  .card-footer{
+    display:flex; justify-content:space-between; align-items:center;
+    border-top:1px solid var(--border); padding-top:14px; margin-top:auto;
+  }
+  .try-btn{
+    font-size:13.5px; font-weight:600; color:var(--bg); background:var(--text);
+    padding:8px 16px; border-radius:8px; transition:background .15s;
+  }
+  .try-btn:hover{ background:var(--gold); }
+  .no-results{ text-align:center; padding:60px 0; color:var(--text-faint); display:none; }
+
+  /* ===== ARTICLE / CONTENT MARKETING SECTION ===== */
+  .article-section{ background:var(--bg-elev); border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:70px 24px; }
+  .article-head{ text-align:center; max-width:640px; margin:0 auto 40px; }
+  .article-head .eyebrow{ margin-bottom:16px; }
+  .article-head h2{ font-size:clamp(26px,4vw,36px); font-weight:800; }
+  .article-head p{ color:var(--text-dim); margin-top:12px; }
+  .article-card{
+    background:var(--bg-card); border:1px solid var(--border); border-radius:16px;
+    padding:26px; display:flex; flex-direction:column; gap:10px;
+  }
+  .article-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:18px; }
+  .article-card .num{ font-family:'Tajawal'; font-size:13px; color:var(--gold); font-weight:700; }
+  .article-card h3{ font-size:17px; font-weight:700; }
+  .article-card p{ font-size:14px; color:var(--text-dim); }
+
+  /* ===== FOOTER ===== */
+  footer{ padding:50px 24px 40px; text-align:center; color:var(--text-faint); font-size:13.5px; }
+  footer .logo{ justify-content:center; margin-bottom:14px; }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    .card{ transition:none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav wrap">
+    <div class="logo">عرب<span>AI</span>هَب</div>
+    <nav class="nav-links">
+      <a href="#tools">الأدوات</a>
+      <a href="#article">المقالات</a>
+      <a href="#about">عن الموقع</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">● دليل عربي، محدّث أسبوعياً</div>
+    <h1>أدوات الذكاء الاصطناعي، لكن <em>بمقياس عربي</em></h1>
+    <p>ما يهمنا مو بس إذا الأداة قوية — يهمنا هل تفهمك وتكتب وتتكلم بعربي سليم. كل أداة هنا مقيّمة بصراحة.</p>
+    <div class="search-box">
+      <input id="searchInput" type="text" placeholder="ابحث... مثال: كتابة، تحويل صور لفيديو، تفريغ صوت">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    </div>
+    <div class="stats-row">
+      <div class="stat"><b>20</b><span>أداة مراجَعة</span></div>
+      <div class="stat"><b>6</b><span>فئات</span></div>
+      <div class="stat"><b>100%</b><span>تجربة حقيقية</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="filters" id="filters">
+  <div class="chip active" data-cat="all">الكل</div>
+  <div class="chip" data-cat="كتابة">كتابة ومحتوى</div>
+  <div class="chip" data-cat="صور">صور</div>
+  <div class="chip" data-cat="فيديو">فيديو</div>
+  <div class="chip" data-cat="صوت">صوت</div>
+  <div class="chip" data-cat="إنتاجية">إنتاجية وأعمال</div>
+</div>
+
+<section class="tools" id="tools">
+  <div class="wrap">
+    <div class="grid" id="grid"></div>
+    <div class="no-results" id="noResults">ما لقينا أدوات تطابق بحثك. جرّب كلمة ثانية.</div>
+  </div>
+</section>
+
+<section class="article-section" id="article">
+  <div class="wrap">
+    <div class="article-head">
+      <div class="eyebrow">مقالات</div>
+      <h2>ابدأ من هنا</h2>
+      <p>محتوى نكتبه ونحدّثه بأنفسنا — مو مجرد نسخ لقوائم أجنبية.</p>
+    </div>
+    <div class="article-grid">
+      <div class="article-card">
+        <span class="num">01</span>
+        <h3>أفضل 5 أدوات فعلاً تفهم العربي الفصحى والعامية</h3>
+        <p>قارنّا 12 أداة على نفس النصوص العربية — هذي اللي طلعت نتايجها الأدق، ولماذا الأدوات المشهورة عالمياً تتعثر مع لهجاتنا.</p>
+      </div>
+      <div class="article-card">
+        <span class="num">02</span>
+        <h3>Jais و Fanar: هل النماذج العربية جاهزة تنافس ChatGPT؟</h3>
+        <p>نظرة صريحة على النماذج المبنية خصيصاً للعربية، وين تتفوق ووين لسا تحتاج تتطور.</p>
+      </div>
+      <div class="article-card">
+        <span class="num">03</span>
+        <h3>دليل المسوّق العربي: أدوات AI توفر عليك وقت حقيقي</h3>
+        <p>مو كل أداة "تريند" تستاهل وقتك. هذي القائمة اللي فعلاً تستخدمها فرق تسويق عربية اليوم.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="about">
+  <div class="logo">عرب<span>AI</span>هَب</div>
+  <p>دليل مستقل لأدوات الذكاء الاصطناعي، بعين عربية. بعض الروابط أعلاه قد تكون روابط أفلييت — هذا لا يغيّر تقييمنا الصريح لأي أداة.</p>
+</footer>
+
+<script>
+const tools = [
+  {name:"ChatGPT", cat:"كتابة", price:"مجاني / 20$ شهرياً", free:false,
+   desc:"الأشهر عالمياً، ويتحسن باستمرار في فهم العربية الفصحى، لكن يتلعثم أحياناً مع اللهجات الخليجية والمصرية.",
+   pros:["فهم سياق ممتاز","يدعم صوت ومحادثة"], cons:["أحياناً يخلط بين لهجات","الاشتراك بالدولار"],
+   arabic:4, link:"https://chat.openai.com"},
+  {name:"Claude", cat:"كتابة", price:"مجاني / 20$ شهرياً", free:false,
+   desc:"دقيق جداً في الكتابة العربية الرسمية والتحليل الطويل، وأسلوبه أقرب للفصحى المتزنة من المنافسين.",
+   pros:["كتابة عربية أنيقة","ملفات طويلة بدون تشتت"], cons:["أقل شهرة محلياً","لا يوجد تطبيق مستقل بالعربي"],
+   arabic:5, link:"https://claude.ai"},
+  {name:"Jais", cat:"كتابة", price:"مجاني (نسخ مفتوحة)", free:true,
+   desc:"نموذج إماراتي مبني من الصفر على بيانات عربية ضخمة. يفهم اللهجة الخليجية بشكل ملحوظ أفضل من النماذج الغربية.",
+   pros:["مبني للعربية أصلاً","يفهم اللهجات المحلية"], cons:["أضعف في المهام التقنية المعقدة","واجهات استخدام محدودة"],
+   arabic:5, link:"https://inceptioniai.org/jais"},
+  {name:"Fanar", cat:"كتابة", price:"مجاني حالياً", free:true,
+   desc:"مبادرة قطرية لنموذج عربي يراعي القيم والثقافة المحلية، ومناسب لمحتوى ديني وتعليمي حساس ثقافياً.",
+   pros:["حساسية ثقافية عالية","دعم فصحى قوي"], cons:["لا يزال في مراحل مبكرة","مجتمع مطورين صغير"],
+   arabic:5, link:"https://fanar.qa"},
+  {name:"Copy.ai", cat:"كتابة", price:"من 36$ شهرياً", free:false,
+   desc:"أداة قوالب تسويقية جاهزة، لكن مخرجاتها العربية غالباً تحتاج تحرير يدوي قبل النشر.",
+   pros:["قوالب تسويقية جاهزة","سريعة للمسودات"], cons:["عربي حرفي أحياناً","لا يفهم اللهجات"],
+   arabic:2, link:"https://copy.ai"},
+  {name:"Sider", cat:"كتابة", price:"مجاني / مدفوع خفيف", free:true,
+   desc:"إضافة متصفح تجمع عدة نماذج AI للترجمة والتلخيص السريع أثناء تصفحك، مفيدة لتحرير نصوص عربية بسرعة.",
+   pros:["يعمل داخل المتصفح مباشرة","تلخيص وترجمة فوري"], cons:["يعتمد على نماذج خارجية","دقة متفاوتة حسب النموذج المختار"],
+   arabic:3, link:"https://sider.ai"},
+
+  {name:"Midjourney", cat:"صور", price:"من 10$ شهرياً", free:false,
+   desc:"الأقوى فنياً في توليد الصور، لكن لا يزال يواجه صعوبة حقيقية في كتابة نص عربي داخل الصورة بشكل صحيح.",
+   pros:["جودة بصرية استثنائية","تحكم دقيق بالأسلوب"], cons:["نص عربي داخل الصورة مشوّه غالباً","بدون واجهة موقع، يعمل عبر Discord"],
+   arabic:1, link:"https://midjourney.com"},
+  {name:"DALL·E 3", cat:"صور", price:"ضمن اشتراك ChatGPT", free:false,
+   desc:"مدمج داخل ChatGPT، ويفهم الوصف العربي للمشهد جيداً، لكن النص العربي المكتوب داخل الصورة نفسها لا يزال ضعيفاً.",
+   pros:["يفهم الطلب العربي بدقة","سهل الاستخدام"], cons:["كتابة عربية داخل الصورة غير موثوقة"],
+   arabic:3, link:"https://openai.com/dall-e-3"},
+  {name:"Ideogram", cat:"صور", price:"مجاني / من 8$", free:true,
+   desc:"من أفضل أدوات توليد الصور في كتابة النصوص داخل الصورة، ودقته مع الحروف العربية تحسّنت بشكل ملحوظ مقارنة بمنافسيه.",
+   pros:["الأفضل حالياً بكتابة نص عربي بالصورة","خطة مجانية سخية"], cons:["الجودة الفنية أقل من Midjourney أحياناً"],
+   arabic:4, link:"https://ideogram.ai"},
+  {name:"Adobe Firefly", cat:"صور", price:"مجاني / ضمن Creative Cloud", free:true,
+   desc:"مناسب للمصممين المحترفين لأنه مدرّب على محتوى مرخّص قانونياً، ويتكامل مباشرة مع Photoshop.",
+   pros:["آمن قانونياً للاستخدام التجاري","تكامل مع أدوات أدوبي"], cons:["فهم الوصف العربي أضعف من المنافسين"],
+   arabic:2, link:"https://firefly.adobe.com"},
+
+  {name:"Runway", cat:"فيديو", price:"من 12$ شهرياً", free:false,
+   desc:"من الرواد في تحويل النص والصورة إلى فيديو، مناسب لمشاهد سينمائية قصيرة، لكن التعليمات يفضّل كتابتها بالإنجليزية للحصول على أدق نتيجة.",
+   pros:["جودة سينمائية عالية","أدوات تحرير فيديو AI متكاملة"], cons:["يفهم الإنجليزي أفضل بكثير من العربي"],
+   arabic:2, link:"https://runwayml.com"},
+  {name:"HeyGen", cat:"فيديو", price:"من 24$ شهرياً", free:false,
+   desc:"توليد فيديوهات بشخصيات رقمية ناطقة، ودقة مزامنة الشفاه مع الصوت العربي تحسّنت كثيراً مؤخراً.",
+   pros:["مزامنة شفاه جيدة مع العربي","أصوات عربية طبيعية نسبياً"], cons:["السعر مرتفع للاستخدام الفردي"],
+   arabic:4, link:"https://heygen.com"},
+  {name:"Pika", cat:"فيديو", price:"مجاني / من 8$", free:true,
+   desc:"سهل وسريع لمقاطع فيديو قصيرة من نص أو صورة، خيار جيد للمبتدئين قبل الانتقال لأدوات أعقد.",
+   pros:["سهل جداً للمبتدئين","خطة مجانية تجريبية"], cons:["مقاطع قصيرة نسبياً","النص العربي يفضل كتابته بالإنجليزي"],
+   arabic:2, link:"https://pika.art"},
+  {name:"CapCut AI", cat:"فيديو", price:"مجاني / Pro مدفوع", free:true,
+   desc:"شائع جداً بين صناع المحتوى العرب على تيك توك وإنستقرام، والترجمة التلقائية بالعربي تحسّنت بشكل واضح.",
+   pros:["ترجمة تلقائية عربية دقيقة نسبياً","مجاني بأغلب الميزات"], cons:["أدوات التوليد الكامل بالفيديو محدودة مقارنة بـ Runway"],
+   arabic:4, link:"https://capcut.com"},
+
+  {name:"ElevenLabs", cat:"صوت", price:"مجاني / من 5$ شهرياً", free:true,
+   desc:"الأفضل حالياً في تحويل النص العربي لصوت طبيعي، مع نبرة وتنغيم يقترب كثيراً من صوت بشري حقيقي.",
+   pros:["أصوات عربية طبيعية جداً","استنساخ صوت بجودة عالية"], cons:["الاستخدام المكثف يحتاج خطة مدفوعة"],
+   arabic:5, link:"https://elevenlabs.io"},
+  {name:"Murf", cat:"صوت", price:"من 29$ شهرياً", free:false,
+   desc:"مناسب للفيديوهات التعليمية والتجارية، لكن مكتبة الأصوات العربية أصغر وأقل تنوعاً من ElevenLabs.",
+   pros:["واجهة تحرير سهلة","مناسب للمحتوى المؤسسي"], cons:["أصوات عربية محدودة العدد","نبرة أقل طبيعية أحياناً"],
+   arabic:3, link:"https://murf.ai"},
+  {name:"Otter.ai", cat:"صوت", price:"مجاني / من 17$ شهرياً", free:true,
+   desc:"تفريغ صوتي للاجتماعات، لكن دقته مع العربية أقل بكثير من الإنجليزية، خصوصاً مع تداخل المتحدثين.",
+   pros:["تلخيص تلقائي للاجتماعات","خطة مجانية مفيدة"], cons:["دقة تفريغ العربي متوسطة فقط"],
+   arabic:2, link:"https://otter.ai"},
+
+  {name:"Notion AI", cat:"إنتاجية", price:"إضافة 8-10$ للاشتراك", free:false,
+   desc:"مساعد كتابة وتلخيص داخل مساحة العمل، يتعامل مع العربي بشكل مقبول للمهام اليومية البسيطة.",
+   pros:["مدمج مباشرة بمساحة العمل","تلخيص صفحات طويلة"], cons:["ليس أداة عربية متخصصة"],
+   arabic:3, link:"https://notion.so"},
+  {name:"Gamma", cat:"إنتاجية", price:"مجاني / من 10$ شهرياً", free:true,
+   desc:"يحوّل فكرة أو نص إلى عرض تقديمي كامل التصميم خلال دقائق، ويدعم الكتابة العربية RTL بشكل صحيح.",
+   pros:["يدعم العربي RTL فعلياً","تصاميم جاهزة أنيقة"], cons:["تخصيص التصميم محدود مقارنة بباوربوينت"],
+   arabic:4, link:"https://gamma.app"},
+  {name:"Canva Magic Studio", cat:"إنتاجية", price:"مجاني / Pro 13$ شهرياً", free:true,
+   desc:"مجموعة أدوات AI داخل كانفا لتصميم وكتابة وتحرير، وواجهة كانفا نفسها من الأفضل عربياً بين أدوات التصميم.",
+   pros:["واجهة عربية كاملة","سهل جداً للمبتدئين"], cons:["الكتابة داخل الصور تشترك بنفس ضعف بقية أدوات الصور"],
+   arabic:4, link:"https://canva.com"},
+];
+
+const grid = document.getElementById('grid');
+const noResults = document.getElementById('noResults');
+let activeCat = 'all';
+let query = '';
+
+function gaugeHTML(score){
+  let cls = score>=4 ? '' : score>=3 ? 'mid' : 'low';
+  let bars = '';
+  for(let i=1;i<=5;i++){ bars += `<i class="${i<=score?'on':''}"></i>`; }
+  const labels = {5:'ممتاز',4:'جيد جداً',3:'مقبول',2:'ضعيف',1:'ضعيف جداً'};
+  return `<div>
+    <div class="gauge ${cls}">${bars}</div>
+    <div class="gauge-label">فهم عربي: ${labels[score]}</div>
+  </div>`;
+}
+
+function render(){
+  const q = query.trim().toLowerCase();
+  const filtered = tools.filter(t=>{
+    const matchesCat = activeCat==='all' || t.cat===activeCat;
+    const hay = (t.name+' '+t.cat+' '+t.desc).toLowerCase();
+    const matchesQuery = q==='' || hay.includes(q);
+    return matchesCat && matchesQuery;
+  });
+
+  grid.innerHTML = filtered.map(t=>`
+    <div class="card">
+      <div class="card-top">
+        <div>
+          <div class="card-title">${t.name}</div>
+          <div class="card-cat">${t.cat}</div>
+        </div>
+        ${gaugeHTML(t.arabic)}
+      </div>
+      <div class="card-desc">${t.desc}</div>
+      <div class="pros-cons">
+        <div class="pros"><span class="label">مميزات</span><ul>${t.pros.map(p=>`<li>${p}</li>`).join('')}</ul></div>
+        <div class="cons"><span class="label">عيوب</span><ul>${t.cons.map(c=>`<li>${c}</li>`).join('')}</ul></div>
+      </div>
+      <div class="card-footer">
+        <span class="price-tag ${t.free?'free':''}">${t.price}</span>
+        <a class="try-btn" href="${t.link}" target="_blank" rel="noopener">جرّب الأداة ←</a>
+      </div>
+    </div>
+  `).join('');
+
+  noResults.style.display = filtered.length===0 ? 'block' : 'none';
+}
+
+document.getElementById('filters').addEventListener('click', (e)=>{
+  const chip = e.target.closest('.chip');
+  if(!chip) return;
+  document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+  chip.classList.add('active');
+  activeCat = chip.dataset.cat;
+  render();
+});
+
+document.getElementById('searchInput').addEventListener('input', (e)=>{
+  query = e.target.value;
+  render();
+});
+
+render();
+</script>
+</body>
+</html>
