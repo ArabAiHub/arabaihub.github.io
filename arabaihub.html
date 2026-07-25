@@ -830,17 +830,9 @@ function gaugeHTML(score){
   </div>`;
 }
 
-function render(){
-  const q = query.trim().toLowerCase();
-  const filtered = tools.filter(t=>{
-    const matchesCat = activeCat==='all' || t.cat===activeCat;
-    const hay = (t.name+' '+t.cat+' '+t.desc).toLowerCase();
-    const matchesQuery = q==='' || hay.includes(q);
-    return matchesCat && matchesQuery;
-  });
-
-  grid.innerHTML = filtered.map(t=>`
-    <div class="card">
+function toolCardHTML(t){
+  return `
+    <div class="card hover-zoom">
       <div class="card-top">
         <div>
           <div class="card-title">${t.name}</div>
@@ -858,7 +850,19 @@ function render(){
         <a class="try-btn" href="${t.link}" target="_blank" rel="noopener">جرّب الأداة ←</a>
       </div>
     </div>
-  `).join('');
+  `;
+}
+
+function render(){
+  const q = query.trim().toLowerCase();
+  const filtered = tools.filter(t=>{
+    const matchesCat = activeCat==='all' || t.cat===activeCat;
+    const hay = (t.name+' '+t.cat+' '+t.desc).toLowerCase();
+    const matchesQuery = q==='' || hay.includes(q);
+    return matchesCat && matchesQuery;
+  });
+
+  grid.innerHTML = filtered.map(toolCardHTML).join('');
 
   noResults.style.display = filtered.length===0 ? 'block' : 'none';
 }
