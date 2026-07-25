@@ -32,7 +32,7 @@ LOG_PATH = os.path.join(ARTICLES_DIR, "log.json")
 SITE_URL = "https://arabaihub.github.io"
 MAX_CARDS = 10  # how many article cards to keep visible on the homepage
 
-GEMINI_MODEL = "gemini-2.5-flash"
+GEMINI_MODEL = "gemini-3.1-flash-lite"
 GEMINI_URL = (
     f"https://generativelanguage.googleapis.com/v1beta/models/"
     f"{GEMINI_MODEL}:generateContent"
