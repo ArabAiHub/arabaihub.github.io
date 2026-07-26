@@ -2,9 +2,33 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://arabaihub.github.io/</loc>
-    <lastmod>2026-07-11</lastmod>
+    <lastmod>2026-07-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://arabaihub.github.io/articles/article-01-best-arabic-ai-tools-2026.html</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://arabaihub.github.io/articles/article-02-jais-fanar-vs-chatgpt.html</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://arabaihub.github.io/articles/article-03-ai-tools-for-arabic-marketers.html</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://arabaihub.github.io/articles/choose-arabic-ai-tool-2026.html</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://arabaihub.github.io/articles/article-2026-07-25.html</loc>
@@ -15,6 +39,18 @@
   <url>
     <loc>https://arabaihub.github.io/articles/اتمتة-صناعة-المحتوى-4-ادوات-ذكية-توفر-وقتك-يوميا.html</loc>
     <lastmod>2026-07-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://arabaihub.github.io/articles/article-07-ai-tools-for-students-and-creators.html</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://arabaihub.github.io/articles/article-08-claude-arabic-ai.html</loc>
+    <lastmod>2026-07-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
